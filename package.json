@@ -1,0 +1,30 @@
+{
+  "name": "forex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon ./src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sushan",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "events": "^3.3.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "lightweight-charts": "^3.3.0",
+    "lodash": "^4.17.21",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7",
+    "polygon.io": "^2.0.2",
+    "request": "^2.88.2",
+    "socket.io": "^3.1.2",
+    "socket.io-client": "^3.1.2",
+    "ws": "^7.4.3"
+  }
+}
