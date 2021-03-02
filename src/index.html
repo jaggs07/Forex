@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Title</title>
+</head>
+
+<style>
+  #tvchart {
+    position: relative;
+    width: 90vw;
+    height: 80vh;
+  }
+
+  .trans {
+    position: absolute;
+    width: 90vw;
+    height: 80vh;
+    z-index: 99;
+    background-color: rgb(6, 57, 112, 0.4);
+  }
+
+  .container {
+    margin: 40px;
+  }
+</style>
+
+<body>
+
+
+  <div class="container">
+    <h1>Live Chart (Demo For sam9083)</h1>
+    <div id="tvchart"></div>
+  </div>
+
+</body>
+
+<script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const chartProperties = {
+    timeScale: {
+      timeVisible: true,
+      secondsVisible: false,
+    }
+  }
+  const domElement = document.getElementById('tvchart');
+  const chart = LightweightCharts.createChart(domElement, chartProperties);
+  const candleSeries = chart.addLineSeries();
+  var socket = io.connect('/')
+
+  var socket = io.connect('/')
+  socket.on('trade_data', function (trade) {
+    const { p: value, t: time } = trade
+    candleSeries.update({ time, value });
+  })
+</script>
+
+</html>
