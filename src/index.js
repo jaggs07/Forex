@@ -6,7 +6,7 @@ const Polygon = require('./polygon')
 
 
 io.on('connection', function (socket) {
-  const client = new Polygon({ apiKey: "rCPMgpXH80NfZSGMDjGhmPKloJHQlxbg" })
+  const client = new Polygon({ apiKey: "YOUR_KEY" })
   client.subscribe(['XT.*'])
 
   client.on('XT', (trade) => {
