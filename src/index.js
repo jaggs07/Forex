@@ -1,7 +1,7 @@
 const app = require('express')()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
-const { PORT, API_KEY } = require('../config')
+const { PORT, API_KEY, PAIR_BTC_USD } = require('../config')
 const Polygon = require('./polygon')
 const cors = require('cors')
 const routes = require('./routes')
@@ -13,7 +13,9 @@ io.on('connection', function (socket) {
   client.subscribe(['XT.*'])
 
   client.on('XT', (trade) => {
-    socket.emit('trade_data', trade)
+    if (trade.pair === PAIR_BTC_USD) {
+      socket.emit('trade_data', trade)
+    }
   })
 })
 
